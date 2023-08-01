@@ -88,6 +88,22 @@ def lk(request, slug):
             },
             'orders': orders
         }
+    else:
+        #  Test data
+        orders = Order.objects.all()
+        data = {
+            'js_client': {
+                "name": 'myname',
+                "phone": '88005553535',
+                "mail": 'my@mail.ru',
+                "address": 'my address',
+                "slug": "slug",
+            },
+            'orders': orders
+        }
+
+    return render(request, 'lk_template.html', context=data)
+
 
 def check_time_period(time):
     [hours, minutes] = ":".split(time)
@@ -182,23 +198,6 @@ def order(request):
         )
 
     return redirect('index')
-
-
-    else:
-        #  Test data
-        orders = Order.objects.all()
-        data = {
-            'js_client': {
-                    "name": 'myname',
-                    "phone": '88005553535',
-                    "mail": 'my@mail.ru',
-                    "address": 'my address',
-                    "slug": "slug",
-            },
-            'orders': orders
-        }
-
-    return render(request, 'lk_template.html', context=data)
 
 
 def lk_order(request):
